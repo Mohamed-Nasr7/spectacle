@@ -1,6 +1,6 @@
 import React from "react";
 import Star from "@material-ui/icons/Star";
-import { useStateValue } from "../StateProvider";
+import { useStateValue } from "../store/StateProvider";
 
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";

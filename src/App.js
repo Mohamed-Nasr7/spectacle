@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { auth } from "./firebase";
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "./store/StateProvider";
 
 import "./App.css";
 import Nav from "./components/Nav";
 import NavLinks from "./components/NavLinks";
-import Home from "./components/Home";
-import Checkout from "./components/Checkout";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Home from "./pages/Home";
+import Checkout from "./pages/Checkout";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Footer from "./components/Footer";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
@@ -22,7 +22,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#142B6F",
+      main: "#000",
     },
   },
   breakpoints: {
@@ -38,10 +38,31 @@ const theme = createMuiTheme({
     fontFamily: "Open Sans",
   },
   overrides: {
+    MuiCssBaseline: {
+      "@global": {
+        body: {
+          backgroundColor: "fff",
+        },
+      },
+    },
+    MuiContainer: {
+      maxWidthSm: {
+        paddingLeft: "50px",
+        paddingRight: "50px",
+      },
+      maxWidthMd: {
+        paddingLeft: "50px",
+        paddingRight: "50px",
+      },
+      maxWidthLg: {
+        paddingLeft: "100px",
+        paddingRight: "100px",
+      },
+    },
     MuiAppBar: {
       colorPrimary: {
         backgroundColor: "#fff",
-        color: "#142B6F",
+        color: "#000",
       },
       root: {
         height: "55px",
@@ -50,17 +71,24 @@ const theme = createMuiTheme({
     },
     MuiPaper: {
       root: {
-        color: "#142B6F",
+        color: "#000",
       },
     },
     MuiCardContent: {
       root: {
+        padding: "10px",
         paddingBottom: "15px !important",
+      },
+    },
+    MuiInputBase: {
+      input: {
+        fontSize: "13px",
       },
     },
   },
   color: {
-    main: "#142B6F",
+    main: "#000",
+    secondary: "rgb(237, 231, 221)",
   },
 });
 
@@ -76,6 +104,9 @@ const useStyles = makeStyles((theme) => ({
   },
   iconBtn: {
     borderRadius: "0",
+  },
+  bgColor: {
+    backgroundColor: "red",
   },
 }));
 

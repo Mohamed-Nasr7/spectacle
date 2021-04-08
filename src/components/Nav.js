@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import NavLinks from "./NavLinks";
 
+import FlexContainer from "./FlexContainer";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Hidden from "@material-ui/core/Hidden";
@@ -12,14 +12,15 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   rightBox: {
+    letterSpacing: "1.5px",
     [theme.breakpoints.up("md")]: {
-      width: "110px",
+      width: "140px",
     },
     [theme.breakpoints.down("md")]: {
-      width: "100px",
+      width: "130px",
     },
     [theme.breakpoints.down("sm")]: {
-      width: "95px",
+      width: "110px",
     },
     [theme.breakpoints.down("xs")]: {
       width: "25px",
@@ -34,21 +35,34 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "30px",
     },
   },
+  shop: {
+    fontWeight: "bold",
+    letterSpacing: "1.5px",
+    transition: "all 0.2s ease",
+    "&:hover": {
+      color: "#afa38e",
+    },
+  },
 }));
 
 function Nav({ toggler, handleScroll }) {
   const classes = useStyles();
 
+  window.addEventListener("scroll", () => {
+    if (window.screenTop) {
+    }
+  });
+
   return (
     <AppBar className="">
-      <Container>
+      <FlexContainer>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Link to="/" onClick={handleScroll}>
-            <div>Shop</div>
+            <div className={classes.shop}>Shop</div>
           </Link>
 
           <Link to="/" className={classes.logo}>
-            <div>Brumalis</div>
+            <div>Spectacle</div>
           </Link>
 
           <Box
@@ -71,7 +85,7 @@ function Nav({ toggler, handleScroll }) {
             <NavLinks hidden="xsDown" />
           </Box>
         </Box>
-      </Container>
+      </FlexContainer>
     </AppBar>
   );
 }

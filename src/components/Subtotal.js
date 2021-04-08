@@ -1,6 +1,6 @@
 import React from "react";
 import CurrencyFormat from "react-currency-format";
-import { useStateValue } from "../StateProvider";
+import { useStateValue } from "../store/StateProvider";
 
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";

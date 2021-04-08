@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+@import url("~slick-carousel/slick/slick.css");
+@import url("~slick-carousel/slick/slick-theme.css");
 
 * {
   margin: 0;
@@ -12,4 +14,29 @@ a {
   color: inherit;
   display: flex;
   align-items: center;
+}
+
+.slick-next {
+  right: -35px !important;
+}
+.slick-prev {
+  left: -35px !important;
+}
+@media screen and (max-width: 600px) {
+  .slick-next {
+    right: -7px !important;
+  }
+  .slick-prev {
+    left: -12px !important;
+  }
+}
+
+.slick-prev:before,
+.slick-next:before {
+  opacity: 1 !important;
+  font-size: 25px !important;
+}
+
+.slick-dots {
+  bottom: -47px !important;
 }

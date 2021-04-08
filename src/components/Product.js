@@ -1,6 +1,6 @@
 import React from "react";
 import Star from "@material-ui/icons/Star";
-import { useStateValue } from "../StateProvider";
+import { useStateValue } from "../store/StateProvider";
 
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -13,51 +13,66 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     padding: "15px",
     margin: "0 auto",
-    height: "100%",
+    height: "400px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    border: "1px solid #b3b3b3a3",
-    boxShadow:
-      "0 2.3px 3px rgba(0, 0, 0, 0.024), 0 4.2px 8.3px rgba(0, 0, 0, 0.035), 0 6.1px 19.9px rgba(0, 0, 0, 0.046),0 14px 66px rgba(0, 0, 0, 0.07)",
-
-    "&:hover": {
+    boxShadow: "none",
+    border: "1px solid rgba(0,0,0,0.1)",
+    fontSize: "1rem",
+    /* "&:hover": {
       boxShadow:
         "0 2.3px 3px rgba(0, 0, 0, 0.038), 0 5px 8.3px rgba(0, 0, 0, 0.055), 0 10.5px 19.9px rgba(0, 0, 0, 0.072), 0 24px 66px rgba(0, 0, 0, 0.11)",
+    }, */
+    [theme.breakpoints.down("md")]: {
+      height: "430px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "450px",
+      margin: "0 5%",
     },
   },
   cardImg: {
-    maxHeight: "200px",
-    margin: "5px 0 10px",
+    height: "270px",
+    display: "flex",
+    alignItems: "center",
   },
   img: {
     display: "block",
-    maxHeight: "200px",
+    maxHeight: "155px",
     objectFit: "contain",
     width: "100%",
-    [theme.breakpoints.down("md")]: {
-      maxHeight: "145px",
+    [theme.breakpoints.down("sm")]: {
+      maxHeight: "150px",
     },
   },
   star: {
     color: "#ffcc00",
   },
   productTitle: {
-    [theme.breakpoints.up("lg")]: {
-      fontSize: "17.5px",
-    },
+    /* [theme.breakpoints.up("lg")]: {
+      fontSize: "17px",
+    }, */
   },
   price: {
     margin: "7px 0",
-    [theme.breakpoints.up("lg")]: {
+    /* [theme.breakpoints.up("lg")]: {
       fontSize: "17.5px",
-    },
+    }, */
   },
   button: {
+    fontSize: "12px",
+    color: "#000",
+    backgroundColor: theme.color.secondary,
+    fontWeight: "bold",
+    marginTop: "10px",
     [theme.breakpoints.down("md")]: {
-      width: "112px",
+      width: "117px",
       fontSize: "0.75rem",
       padding: "6px 10px",
+    },
+    "&:hover": {
+      backgroundColor: "#afa38e70",
     },
   },
 }));
@@ -81,6 +96,10 @@ function Product({ id, title, image, price, rating }) {
 
   return (
     <Card className={classes.card}>
+      <CardMedia className={classes.cardImg}>
+        <img src={image} alt="img" className={classes.img} />
+      </CardMedia>
+
       <CardContent>
         <p className={classes.productTitle}>{title}</p>
         <p className={classes.price}>
@@ -93,11 +112,6 @@ function Product({ id, title, image, price, rating }) {
               <Star key={i} className={classes.star} />
             ))}
         </div>
-      </CardContent>
-      <CardMedia className={classes.cardImg}>
-        <img src={image} alt="img" className={classes.img} />
-      </CardMedia>
-      <CardContent>
         <Button
           variant="contained"
           color="primary"

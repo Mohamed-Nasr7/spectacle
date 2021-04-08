@@ -1,5 +1,5 @@
 import React from "react";
-import { useStateValue } from "../StateProvider";
+import { useStateValue } from "../store/StateProvider";
 import { auth } from "../firebase";
 import { Link } from "react-router-dom";
 import MenuWrapper from "./MenuWrapper";
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   linkHover: {
     transition: "all 0.2s ease",
     "&:hover": {
-      color: "#6a7bb0",
+      color: "#afa38e",
     },
   },
 }));
@@ -35,6 +35,7 @@ function NavLinks({ hidden }) {
       alignItems={hidden ? "space-between" : "center"}
       flexDirection={hidden ? "row" : "column"}
       height={hidden ? "initial" : "100px"}
+      fontWeight="bold"
     >
       <MenuWrapper hidden={hidden}>
         <Link to="/checkout" className={classes.linkHover}>
